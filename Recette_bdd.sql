@@ -70,6 +70,7 @@ CREATE TABLE Utilisateur(
         vegetarien    Bool ,
         halal         Bool ,
         vegan         Bool ,
+        ad_mail		  Varchar(25),
         PRIMARY KEY (ID_utilis )
 )ENGINE=InnoDB;
 
@@ -104,7 +105,7 @@ CREATE TABLE compose_Ing_All(
 
 CREATE TABLE note_Util_Rc(
         note        Int ,
-        description Varchar (25) ,
+        description Varchar (500) ,
         date_note   Date ,
         ID_recette  Int NOT NULL ,
         ID_utilis   Int NOT NULL ,
@@ -153,8 +154,6 @@ INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instr
 
 INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Brochette boeuf fromage', '1', '30', 'Etape 1 Couper le fromage en bâtonnets. La longueur doit correspondre à la largeur des tranches de viande. Etape 2 Saler, poivrer la viande et la passer rapidement dans la sauce terryaiki. Etape 3 Piquer le fromage sur les piques, enrouler la viande autour. Etape 4 Cuire au barbecue ou à la poêle à feu vif.', '2.5', '2');
 
--- a VERIFIER
-
 INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Tatin de navets confits au Parme', '1', '90', 'Etape 1 Préchauffer le four à thermostat 7 (210°C). Etape 2 Peler les navets, les faire cuire 5 mn à feu doux à couvert avec un peu de sel et de l eau à hauteur, puis les égoutter. Etape 3 Faire réduire le vin de moitié (à feu vif). Caraméliser le sucre avec une goutte d eau dans une sauteuse. Etape 4 Hors du feu, ajouter le vinaigre et le jus d orange. Remmettre sur le feu, ajouter le vin, 50 g de beurre, du sel et du poivre. Etape 5 Plonger les navets dans ce sirop, couvrir aux trois quarts, puis laisser cuire en les retournant fréquement jusqu à ce qu ils soient tendres et enrobés d une couche sirupeuse. Etape 6 Tapisser le fond de moule à tarte de papier sulfurisé beurré. Aligner les navets. poser la pâte, la piquer avec une aiguille, faire glisser les bords contre le moule. Cuire 25 mn au four. Etape 7 Faire rissoler le jambon en lanières dans 10 g de beurre. Etape 8 Laisser tiédir la tarte 5 mn, puis la retourner dans un plat. Parsemer de jambon et de brins de cerfeuil, puis servir.', '4', '2');
 
 INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Tomates aux oeufs cocottes', '1', '20', 'Etape 1 Laver les tomates, couper un "chapeau", et les évider complètement. Etape 2 Enfourner les tomates salées et poivrées au four (200°C-th 6-7), pendant 3 min. Etape 3 Sortir les tomates du four. Déposer dans le fond des tomates 1 cuillère à café de crème fraîche. Etape 4 Casser les oeufs dans les tomates, remettre au four. Etape 5 Laisser cuire, jusqu à ce que le blanc des oeufs blanchisse (environ 5 min), et servir immédiatement.', '3.5', '1');
@@ -184,9 +183,6 @@ INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instr
 INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Aubergines farcies', '1', '55', 'Etape 1 Coupez l aubergine eu deux dans le sens de la longueur. Avec un couteau, fendez la chair de l aubergine en faisant des X (cest pour que çà cuise à l intérieur). Etape 2 Faites coulez un filez d huile d olive sur la surface, et enfournez à 250° pendant une demi heure. Etape 3 Avec une cuillère à soupe, retirez la chair des aubergines et coupez la finement. Etape 4 Faites blanchir les oignons à feu doux pendant un bon quart  heure sans les faire griller... au bout de 5 min, ajouter de la chair à saucisse si vous aimez la viande (c est très bon aussi sans…) Etape 5 Puis ajouter la tomate coupée en petits dés et l ail, en laissant à feu très doux. Etape 6 Ajoutez la chair d aubergine et assaisonner. Ajouter le persil et le basilic. Etape 7 Et aussi l oeuf battu. Etape 8 Mélangez bien le tout et remplissez les demi-aubergines. recouvrez de gruyère râpé. Etape 9 Replacez au four pendant 5 à 10 mn dans le four encore chaud. Etape 10 Faites refroidir un peu, c est bon chaud ou froid.', '3.5', '2');
 
 INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Osso bucco de veau', '1', '65', 'Etape 1 Fariner la viande, tapoter pour retirer l excédent. Les faire dorer sur toutes les faces dans une cocotte-minute avec un fond d huile. Etape 2 Peler et couper les carottes en rondelles épaisses, émincer les oignons, hacher l ail. Les ajouter dans la cocotte, ainsi que les tomates et le vin blanc. Saler, poivrer, ajouter le bouquet garni et fermer la cocotte. Etape 3 Laisser cuire 45 min à partir de la mise en rotation de la soupape, à feu doux.', '4', '2');
-
---- FIn a verif
-
 
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Riz', 'Féculent');
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Poulet', 'Viande');
@@ -241,8 +237,6 @@ INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Oeuf', 'Frais
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Boeuf', 'Viande');
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Sauce terryiaki', 'Sauce');
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Cheddar', 'Fromage');
-
--- a changer
 
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Navet', 'Légume');
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Pâte Feuilletée', 'Condiment');
@@ -315,7 +309,6 @@ INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Huile', 'Huil
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Tomates concacassées', 'Fruit');
 
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Cerfeuil', 'Herbe');
----FIn a changer
 
 INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('58.5', 'g', '1', '1');
 INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('58.5', 'g', '1', '2');
@@ -535,3 +528,67 @@ INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `I
 INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '23', '21'); -- Poivre
 INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '23', '8'); -- 1 pincée de sel
 
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Cooper', 'Travis', '0', '1', '0', 'CooperTravis@gmail.com');
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Bobo', 'marc', '1', '0', '0', 'marctheBobo@gmail.com');
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Boby', 'Patrick', '1', '0', '0', 'BobyandPatrick@gmail.com');
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Boukbouk', 'Remrem', '0', '1', '0', 'remi.boukeloua@efrei.net');
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'huang', 'Claire', '0', '0', '0', 'claire.huang@efrei.net');
+
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('1', 'A ne jamais refaire', '2018-02-10', '5', '5');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('2', 'n\'a pas assez de goûts', '2018-02-8', '6', '4');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('3', 'Pas mal', '2018-02-7', '20', '3');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('4', 'Une tuerie', '2018-02-17', '19', '2');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('5', 'c\'est excellent, je recommande', '2018-02-15', '13', '1');
+
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Gluten');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Crustacé');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Oeuf');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Poisson');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Arachide');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Soja');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Lait');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Fruit à coques');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Céleri');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Moutarde');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Graines de sésame');
+INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Mollusque');
+
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('1', '23');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('1', '43');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('1', '86');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('1', '71');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('1', '49');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('1', '99');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('1', '61');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('3', '44');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('2', '95');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('4', '33');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('4', '38');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('5', '90');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('5', '80');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('5', '84');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('5', '89');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('6', '99');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '26');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '27');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '34');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '36');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '39');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '41');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '55');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '57');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '62');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '73');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '74');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '75');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('7', '77');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('9', '10');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('10', '23');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('10', '92');
+INSERT INTO `cook_book`.`compose_ing_all` (`ID_all`, `ID_ingr`) VALUES ('11', '100');
+
+INSERT INTO `cook_book`.`est_allergique_all_util` (`ID_all`, `ID_utilis`) VALUES ('2', '1');
+INSERT INTO `cook_book`.`est_allergique_all_util` (`ID_all`, `ID_utilis`) VALUES ('3', '2');
+INSERT INTO `cook_book`.`est_allergique_all_util` (`ID_all`, `ID_utilis`) VALUES ('4', '3');
+INSERT INTO `cook_book`.`est_allergique_all_util` (`ID_all`, `ID_utilis`) VALUES ('8', '4');
+INSERT INTO `cook_book`.`est_allergique_all_util` (`ID_all`, `ID_utilis`) VALUES ('6', '5');
