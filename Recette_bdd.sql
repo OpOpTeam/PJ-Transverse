@@ -530,9 +530,20 @@ INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `I
 
 INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Cooper', 'Travis', '0', '1', '0', 'CooperTravis@gmail.com');
 INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Bobo', 'marc', '1', '0', '0', 'marctheBobo@gmail.com');
-INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Boby', 'Patrick', '1', '0', '0', 'BobyandPatrick@gmail.com');
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Boby', 'Patrick', '1', '1', '0', 'BobyandPatrick@gmail.com');
 INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Boukbouk', 'Remrem', '0', '1', '0', 'remi.boukeloua@efrei.net');
 INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'huang', 'Claire', '0', '0', '0', 'claire.huang@efrei.net');
+
+-- nouj ajout
+
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Pierre', 'Jean', '1', '0', '0', 'Jeanbon@gmail.com');
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Chang', 'Simon', '0', '0', '0', 'simon.chang@efrei.net');
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Boumassa', 'Abdel', '0', '1', '0', 'Abdou@gmail.com');
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Racine', 'Jean', '0', '0', '1', 'Lalecture@gmail.com');
+INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Tran', 'Vinh', '1', '0', '0', 'kinhvinh.tran@efrei.net');
+
+-- fin ajout
+
 
 INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('1', 'A ne jamais refaire', '2018-02-10', '5', '5');
 INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('2', 'n\'a pas assez de goûts', '2018-02-8', '6', '4');
@@ -540,6 +551,25 @@ INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_
 INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('4', 'Une tuerie', '2018-02-17', '19', '2');
 INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('5', 'c\'est excellent, je recommande', '2018-02-15', '13', '1');
 
+-- nouvel ajout
+
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('5', 'Super', '2018-02-10', '16', '5');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('4', 'A tester au moins une fois', '2018-02-8', '4', '5');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('3', 'très bon', '2018-02-7', '20', '5');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('4', 'Une tuerie', '2018-02-17', '19', '5');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('5', 'c\'est excellent, je recommande', '2018-02-15', '13', '5');
+
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('5', 'Super', '2018-02-10', '16', '9');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('5', 'c\'est excellent,', '2018-02-8', '16', '10');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('5', 'très bon', '2018-02-7', '16', '7');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('5', 'c\'est excellent', '2018-02-17', '16', '6');
+INSERT INTO `cook_book`.`note_util_rc` (`note`, `description`, `date_note`, `ID_recette`, `ID_utilis`) VALUES ('5', 'c\'est excellent, je recommande', '2018-02-15', '16', '8');
+
+
+
+
+
+-- fin nouvel ajout
 INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Gluten');
 INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Crustacé');
 INSERT INTO `cook_book`.`allergene` (`nom_allerg`) VALUES ('Oeuf');
