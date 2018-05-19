@@ -212,6 +212,108 @@ function recherche_meilleure_recette_ing_fav($conn, $id_util){
 	}
 }
 
+function recherche_nom_recette($conn){
+
+	try{
+		if (isset($_GET['recherche'])){
+
+    		$recherche =  $_GET['recherche'];
+			/* Affichage des recettes contenant le mot saisie par l'utilisateur dans le titre de la recette */
+			$reponse = $conn->prepare("SELECT nom_recette, ID_recette FROM recette Where nom_recette LIKE '%".$recherche."%' ORDER BY nom_recette");
+
+			$reponse->execute();
+
+			// Set the resulting array to associative
+			$reponse->setFetchMode(PDO::FETCH_ASSOC);
+			$result = $reponse->fetchAll();
+			
+			echo "<table border=1>";
+			
+			echo "<tr> <td>nom</td> <td>id</td>";
+			foreach ($result as $value)
+			{
+				echo "<tr>";
+				foreach( $value as $key => $val)
+				{
+					echo ("<td> $val<br> </td>");
+				}
+				echo"</tr>";      
+			}
+			echo "</table>";
+  		}
+  	}
+	catch(PDOException $e){
+		echo "Error: " . $e->getMessage();
+	}
+}
+
+
+/**
+*	Cette fonction permet la recherche des noms des recettes possédant les ingrédients entrés par l'utilisateur séparé d'une ',' sans espace
+**/
+
+function recherche_nom_ingredient($conn){
+
+	try{
+		if (isset($_GET['recherche_ingr'])){
+
+    		$recherche_ingr =  $_GET['recherche_ingr'];
+
+    		/*
+    		*	liste_ingr correspond à la liste de tous les ingrédients présents dans  
+    		*/
+    		$liste_ingr = explode(",", $recherche_ingr);
+    		echo count($liste_ingr);
+
+    		/*
+    		*	Creation de la query 
+    		*/
+    		for ($i = 0 ;$i < count($liste_ingr); $i++){
+    			echo $liste_ingr[$i];
+    			if ($i == 0)$query = " select distinct nom_recette from recette inner join possede_rc_ing on possede_Rc_Ing.ID_recette = recette.ID_recette
+											   					   join ingredient on Ingredient.ID_ingr = possede_Rc_Ing.ID_ingr ";
+    			else {
+    				$query.=  " join possede_rc_ing possede_rc_ing".$i." on possede_Rc_Ing".$i.".ID_recette = recette.ID_recette
+                                join ingredient ingredient".$i." on ingredient".$i.".ID_ingr = possede_Rc_Ing".$i.".ID_ingr ";
+    			}
+    		}
+    		for ($i = 0 ;$i < count($liste_ingr); $i++){
+    			if ($i == 0)$where_query = "WHERE ingredient.nom_ingr LIKE '%".$liste_ingr[0]."%' ";
+    			else {
+    				$where_query .= " AND ";
+    				$where_query .= " Ingredient".$i.".nom_ingr LIKE '%".$liste_ingr[$i]."%' ";
+    			}
+    		}
+
+    		echo $query.$where_query;
+			/* Affichage des recettes contenant les ingrédients de la liste */
+			$reponse = $conn->prepare($query.$where_query);
+			$reponse->execute();
+
+			// Set the resulting array to associative
+			$reponse->setFetchMode(PDO::FETCH_ASSOC);
+			$result = $reponse->fetchAll();
+			
+			echo "<table border=1>";
+			
+			echo "<tr> <td>nom_recette</td>";
+			foreach ($result as $value)
+			{
+				echo "<tr>";
+				foreach( $value as $key => $val)
+				{
+					echo ("<td> $val<br> </td>");
+				}
+				echo"</tr>";      
+			}
+			echo "</table>";
+  		}
+  	}
+	catch(PDOException $e){
+		echo "Error: " . $e->getMessage();
+	}
+}
+
 function retrieve_product_id($conn, $id)
 {
 	try{
