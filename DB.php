@@ -333,8 +333,11 @@ function affichage_recette($conn, $id_rec){
 				}
 	}
 
+	// $liste_etape[0] n'a pas de valeur
+	// donc si besoin de l'étape 1 => $liste_etape[1] directement.
 	$liste_etape = explode("/", $descrip);
-	$nb_etape =  count($liste_etape);
+	$nb_etape =  count($liste_etape)-1;
+	echo "nb etape".$nb_etape;
 
 	/*
 	*  ingrédients pour l'affichage 
