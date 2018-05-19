@@ -314,6 +314,84 @@ function recherche_nom_ingredient($conn){
 	}
 }
 
+function affichage_recette($conn, $id_rec){
+
+	/*
+	*	récupération puis transformation en tableau d'étape les inscriptions.
+	*/
+    $reponse = $conn->prepare( "SELECT instruction FROM recette Where ID_recette = ".$id_rec);
+	$reponse->execute();
+
+	// Set the resulting array to associative
+	$reponse->setFetchMode(PDO::FETCH_ASSOC);
+	$result = $reponse->fetchAll();
+
+	foreach ($result as $value) {
+		foreach( $value as $key => $val)
+				{
+					$descrip = $val;
+				}
+	}
+
+	$liste_etape = explode("/", $descrip);
+	$nb_etape =  count($liste_etape);
+
+	/*
+	*  ingrédients pour l'affichage 
+	*/
+    $reponse2 = $conn->prepare( "SELECT ingredient.ID_ingr FROM ingredient join possede_Rc_Ing on ingredient.ID_ingr = possede_Rc_Ing.ID_ingr Where ID_recette = ".$id_rec);
+	$reponse2->execute();
+	// Set the resulting array to associative
+	$reponse2->setFetchMode(PDO::FETCH_ASSOC);
+	$table_ingr = $reponse2->fetchAll();
+
+
+	/*
+	*  calcul de la note moyenne
+	*/
+    $reponse3 = $conn->prepare( "SELECT AVG(note) FROM note_Util_Rc Where ID_recette = ".$id_rec);
+	$reponse3->execute();
+	// Set the resulting array to associative
+	$reponse3->setFetchMode(PDO::FETCH_ASSOC);
+	$result3 = $reponse3->fetchAll();
+
+	foreach ($result as $value) {
+		foreach( $value as $key => $val)
+		{
+			$note = $val;
+		}
+	}
+
+	/*
+	*	récupération puis transformation en tableau d'étape les inscriptions.
+	*/
+    $reponse4 = $conn->prepare( "SELECT temps_min, nb_pers FROM recette Where ID_recette = ".$id_rec);
+	$reponse4->execute();
+
+	// Set the resulting array to associative
+	$reponse4->setFetchMode(PDO::FETCH_ASSOC);
+	$result4 = $reponse4->fetchAll();
+
+	echo "<table border=1>";
+			
+	echo "<tr> <td>minutes</td><td>nb de personne</td>";
+	foreach ($result4 as $value)
+	{
+		echo "<tr>";
+		foreach( $value as $key => $val)
+		{
+			echo ("<td> $val<br> </td>");
+		}
+		echo"</tr>";      
+	}
+	echo "</table>";
+
+}
+
+
+
+
+
 function retrieve_product_id($conn, $id)
 {
 	try{
