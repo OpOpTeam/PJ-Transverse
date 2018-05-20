@@ -1,4 +1,8 @@
 # PJ-Transverse
+----------------
+/!\ CONNEXION A LA DATABASE: 
+pour se connecter à la database, n'oubliez pas de changer les paramètres dans le fichier php/db-config.php.
+----------------
 
 Afin de rentrer dans le sujet de notre projet transverse autour de « L’intelligence artificielle », nous avons réfléchi à différentes stratégies afin de mettre en place le concept afin que notre application ne se limite pas seulement à du traitement de données. Ainsi afin de répondre à la problématique de ce projet, deux objectifs qui incorporent le concept « d’intelligence artificielle » ont été mis en place :
 
