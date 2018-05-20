@@ -123,10 +123,26 @@ function affichage_meilleures_notes_utilisateur($conn, $id_util){
 **/
 function recherche_meilleure_recette_ing_fav($conn, $id_util){
 	try{
+		// L'utilisateur est-il vegetarien ou vegan
+		$rep = $conn->prepare("SELECT vegetarien, vegan  FROM Utilisateur WHERE ID_utilis = ".$id_util);
+		$rep->execute();
+		
+		// Set the resulting array to associative
+		$rep->setFetchMode(PDO::FETCH_ASSOC);
+		$vege_vega = $rep->fetchAll();
+		
+		
 		/* Recupère tous les ingrédients dans toutes les recettes*/
-		$reponse = $conn->prepare("SELECT ID_recette,ID_ingr  FROM possede_Rc_Ing ORDER BY ID_recette");
+		
+		$reponse = $conn->prepare("SELECT ID_recette,ID_ingr FROM possede_Rc_Ing "
+								.(($vege_vega[0]['vegan'] == 1)? "WHERE ID_recette NOT IN (SELECT DISTINCT ID_recette FROM possede_Rc_Ing, Ingredient 
+															WHERE (Ingredient.ID_ingr = possede_Rc_Ing.ID_Ingr) AND ((type = 'Viande') OR (type = 'Laitier') OR (type = 'Poisson') OR (type = 'Fromage')))":
+								(($vege_vega[0]['vegetarien'] == 1)? "WHERE ID_recette NOT IN (SELECT DISTINCT ID_recette FROM possede_Rc_Ing, Ingredient 
+															WHERE (Ingredient.ID_ingr = possede_Rc_Ing.ID_Ingr) AND (type = 'Viande'))": 
+															""))
+								." ORDER BY ID_recette");
 		$reponse->execute();
-
+		
 		// Set the resulting array to associative
 		$reponse->setFetchMode(PDO::FETCH_ASSOC);
 		$table_ingr = $reponse->fetchAll();
@@ -145,13 +161,13 @@ function recherche_meilleure_recette_ing_fav($conn, $id_util){
 			echo"</tr>";      
 		}
 		echo "</table>";
-
+		
 
 	/* Recupère tous les ingrédients dans toutes les recettes*/
 		$reponse2 = $conn->prepare("SELECT DISTINCT ID_ingr FROM ((SELECT ID_recette
 														FROM note_Util_Rc 
 														Where ID_utilis = ".$id_util." ORDER BY note DESC Limit 3 )AS BestRecipies, possede_Rc_Ing)
-												  WHERE BestRecipies.ID_recette = possede_Rc_Ing.ID_recette");
+												  WHERE BestRecipies.ID_recette = possede_Rc_Ing.ID_recette ");
 
 		$reponse2->execute();
 
@@ -198,7 +214,7 @@ function recherche_meilleure_recette_ing_fav($conn, $id_util){
 							}
 							if ($cpt_similitude == 1){
 								$cpt_similitude++;
-								echo $temp_id." "; // recettes succeptibles de plaire au monsieur :D 
+								echo $temp_id." "; // recettes succeptibles de plaire au monsieur 😀 
 								//array_push($table_util_fav,$temp_id);
 							}
 						}
@@ -246,6 +262,7 @@ function recherche_nom_recette($conn){
 		echo "Error: " . $e->getMessage();
 	}
 }
+
 
 
 /**
@@ -451,6 +468,7 @@ function nouveaute_les_mieux_note($conn){
 	echo "Error: " . $e->getMessage();
 	}
 }
+
 
 
 function retrieve_product_id($conn, $id)
