@@ -1,3 +1,5 @@
+-- V_5 DATABASE [Ajout de plus de recettes pour plus de plaisir!]
+
 DROP DATABASE IF EXISTS cook_book;
 
 create database cook_book;
@@ -70,7 +72,7 @@ CREATE TABLE Utilisateur(
         vegetarien    Bool ,
         halal         Bool ,
         vegan         Bool ,
-        ad_mail           Varchar(25),
+        ad_mail		  Varchar(25),
         PRIMARY KEY (ID_utilis )
 )ENGINE=InnoDB;
 
@@ -189,6 +191,24 @@ INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instr
 INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Galettes bretonnes complètes', '1', '15', '/ Hacher le jambon. / Malaxer la farine avec l huile, l oeuf et le sel puis verser l eau petit à petit. La pâte doit être fluide. / Laisser reposer 1 heure puis les cuire dans une poêle bien chaude légèrement graissée. / Retourner la crêpe et casser un oeuf dessus. Ajouter l équivalent d une demie tranche de jambon et 10 g de gruyère. / Lorsque le blanc d oeuf est cuit, repliez les côtés de la crêpes vers le centre. Saler, poivrer et servir.', '4', '2');
 
 INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Bagel toasté au saumon fumé', '1', '5', '/ Couper les bagels en 2 et les placer dans le grille pain (ou les toaster au four). / Retirer, tartiner de fromage frais, arroser de jus de citron et déposer le saumon fumé. Ajouter de l\'aneth. / Bon appétit !.', '4', '1');
+
+INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Velouté glacé petit pois menthe et mouillettes au chèvre', '1', '25', '/ Le velouté: / Faire cuire pendant 15 min les petits pois dans l\'eau bouillante avec le bouillon cube. / Egoutter les petits pois et garder un peu de bouillon.Le mettre au frigo / Passer les petits pois dans l\'eau glacé pour conserver leur couleur. / Mixer les petits pois avec les yaourts, la menthe, l\'ail et le bouillon refroidi. / Passer au chinois ou à la passoire fine et garder la "purée de petit pois" / Assaisoner à votre goût et mettre au frigo. / Pour les mouillettes: / Tartiner le pain avec la purée de petit pois puis mettre le chèvre coupé en tranche dessus. / Passer au four le temps de faire fondre le chèvre.Couper les tranches de pains en petits tronçons.', '3', '1');
+
+INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Egg muffin', '1', '10', '/ 1 Couper le muffin en 2 et placer le au four à 150°C (thermostat 5). / Faire cuire l \'oeuf au plat, saler, poivrer, le retourner en fin de cuisson pour donner une texture onctueuse au jaune. / Dès que l\'oeuf est retourné, mettre le bacon à griller rapidement dans une poêle bien chaude. / Sortir le muffin, confectionner le sandwich en mettant une tranche de bacon, le fromage, l\'oeuf, puis la dernière tranche de bacon.', '5', '1');
+
+INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Cookies au chocolat blanc', '1', '35', '/ Préchauffez le four thermostat 6 (180°C). / Découpez une feuille de papier de cuisson de la taille de la plaque à pâtisserie du four. / A l\'aide d\'un grand couteau, concassez le chocolat pour obtenir des petits morceaux et mettez-les au réfrigérateur. / Tamisez ensemble la farine et la levure chimique au-dessus du saladier. Ajoutez le beurre coupé en très petits morceaux, travaillez rapidement du bout des doigts, comme pour une pâte sablée, jusqu\'à obtenir un mélange d\'aspect sablonneux. / Ajoutez la cassonade, le sucre vanillé, les œufs entiers, la noix de coco et le chocolat blanc. / Mélangez cette préparation à l\'aide d\'une fourchette puis malaxez avec les doigts pour obtenir une pâte souple. / Façonnez des billes de la taille d\'une noix, déposez-les au fur et à mesure sur la feuille de papier de cuisson, en prenant soin de les espacer les unes des autres de quelques centimètres. / Enfournez et laissez cuire pendant 12 à 15 min. / Laissez refroidir les cookies sur une grille avant de les déguster.', '4', '3');
+
+INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Soupe chinoise au poulet', '1', '65', '/ Faites chauffer l\'huile dans une cocotte ou un wok et faites-y revenir le poulet avec l\'ail, l\'oignon, le gingembre et les légumes, et faites revenir quelques minutes. Ajoutez le bouillon et laissez cuire de 12 à 15 min. / Délayez la maïzena avec du bouillon et versez-la dans le plat. Ajoutez les nouilles et les champignons préalablement réhydratés. Assaisonner à votre goût avec le piment, la sauce soja et le vinaigre et laissez cuire quelques minutes. C\'est prêt !', '4.5', '2');
+
+INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Mousse banane et kiwi', '1', '5', '/ Mixer les bananes avec la crème fraîche. / Battre les blancs en neige et les incorporer à la préparation. / Peler les kiwis et les couper en rondelles, puis chaque rondelle en 4 morceaux. / Remplir les verres avec la mousse, puis ajouter les kiwis. / Décorer avec la feuille de menthe. / Vous pouvez varier en remplaçant les kiwi par des fruits rouges ou autres, suivant ce que vous avez dans votre frigo (framboises, fraises, etc.).', '4.5', '3');
+
+INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Soupe Pho', '1', '27', '/ Lavez, séchez,ciselez la ciboulette et la coriandre, émincez le piment, coupez le citron vert en 4 dans le sens de la longueur et mettez-les en attente dans des coupelles. / Portez à ébullition, le bouillon de boeuf, ajoutez-y l\'étoile de badiane, et le morceau de gingembre pelé et émincé. Couvrez et laissez cuire doucement pendant 12 min. / Détaillez le boeuf en fine lamelles, aites cuire les nouilles de riz dans de l\'eau bouillante salée, respectez les indications sur le paquet. / Dans 4 grands bols versez 1 cuillerée à soupe de sauce Nuoc-mâm, egouttezles nouilles de riz,répartissez-les dans les bols, posez les lamelles de boeuf, et versez le bouillon de boeuf brûlant, parsemez de ciboulette et de corinadre. Servez aussitôt. / Chacun ajoutera à son goût, citron vert,et piment. Bon appétit', '4.5', '2');
+
+INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Empanadas au tofu', '1', '100', '/ / Préparer la pâte : mélanger la farine, le sel et l \'huile d \'olive jusqu\'à obtention mélange sableux. / Ajouter graduellement de l\'eau (environ 20 cl) jusqu\'à pouvoir former une boule lisse. Laisser reposer. / Préparer la farce : émincer l\'ail et l\'oignon, puis les faire revenir avec le piment, puis ajouter tofu et remuer 5 min. / Ajouter tomate et courgette, sel, poivre, curry (préférez du curry de madras ou du curry doux, pour résultat plus relevé forcez le piment). / Laisser cuire 5 min, les courgettes doivent rester croquantes. Retirez du feu, ajouter coriandre hachée, laisser bien refroidir. / Là, ça se complique... :) Pour former des ronds de pâte de 8cm de diamètre, abaisser des petites quantités de pâte pour former des ronds approximativement de la bonne grandeur, puis découper la forme exacte avec un emporte-pièce ou simplement avec un récipient du bon diamètre et un couteau. / Répartir la farce dans chaque rond en laissant suffisamment de bords pour pouvoir refermer en pliant en 2. Bien presser les bords ensemble, petits trous à la fourchette sur le dessus. / Cuire à four chaud (180 à 200°C) pour éviter que le dessous soit tout mou... 10 min pile, 15 min face, 10 à 15 min dernier tour en badigeonnant légèrement le dessus à l\'oeuf. Voilà, faut avoir le temps, pour végétariens patients... Version viande hachée délicieuse aussi cela dit!', '3', '1');
+INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Risotto de quinoa', '1', '35', '/ Faire revenir le poivron et la courgette. / Verser le quinoa préalablement rincé. / Verser l\'eau. / Verser le curry, le sel et le poivre. / Remuer. / Faire cuire 15 min. / Ajouter le lait de coco à la fin./ C\'est prêt lorsqu\'on voit les germes du quinoa.', '4.5', '2');
+
+INSERT INTO `cook_book`.`recette` (`nom_recette`, `nb_pers`, `temps_min`, `instruction`, `note`, `ID_cat`) VALUES ('Smoothie végétalien', '1', '10', '/ Mixer dans un blender les épinards et les brocoli avec un peu d\'eau, puis ajouter les flocons d \'avoine, le beurre de cacahuètes, les baie de goji, la banane. / Ajouter quelques fruits rouges surgelés et plus ou moins d\'eau en fonctions de vos envies.', '4', '3');
+
 
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Riz', 'Féculent');
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Poulet', 'Viande');
@@ -326,6 +346,51 @@ INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Farine de fro
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Bagel', 'Féculent');
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Saumon fumé', 'Poisson');
 INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Jus de citron', 'Jus');
+
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Bouillon cube', 'Bouillon');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Pain complet', 'Féculent');
+
+
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Muffin Blanc', 'Féculent');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Bacon', 'Viande');
+
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Chocolat Blanc', 'Sucre');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Noix de Coco en poudre', 'Epicerie sucré');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Sucre Cassonade', 'Sucre');
+
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Soja', 'Légume');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('gingembre en poudre', 'Légume');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Nouilles Chinoise', 'Féculent');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Champignon noir', 'Champignon');
+
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Blanc d\'oeuf', 'Frais');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Kiwi', 'Fruit');
+
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Citron vert', 'Fruit');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Gingembre', 'Légume');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Petit piment vert', 'Epice');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Ciboulette Thaï', 'Herbe');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Pâte de riz', 'Féculent');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Bouillon de pot au feu', 'Bouillon');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Badiane', 'Epice');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Sauce Nuoc mam', 'Sauce');
+
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Farine Bise', 'Condiment');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Tofu', 'Soja');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Courgette', 'Légume');
+
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Quinoa', 'Féculent');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Lait de coco', 'Jus');
+
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Epinard', 'Légume');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Brocolis', 'Légume');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Beurre de cacahuètes', 'Beurre');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Baies de goji', 'Fruit');
+INSERT INTO `cook_book`.`ingredient` (`nom_ingr`, `type`) VALUES ('Fruit rouge', 'Fruit');
+
+
+
+
 
 
 INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('58.5', 'g', '1', '1');
@@ -568,6 +633,98 @@ INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `I
 INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'filet', '26', '121'); -- 1/2 filet de jus de citron
 INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '26', '53'); -- Aneth
 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('130', 'g', '27', '56'); -- velouté glacé aux petit pois
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'NULL', '27', '41'); --
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'NULL', '27', '91'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '27', '122'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '27', '53'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '27', '8'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '27', '21'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'tranche', '27', '123'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '27', '75');
+
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '28', '124'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '28', '44'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('2', 'tranche', '28', '125');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'tranche', '28', '47');
+
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'plaque', '29', '126'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('25', 'g', '29', '26'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '29', '1'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'cuillère à soupe', '29', '127');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('25', 'g', '29', '128'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'sachet', '29', '64'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('62.5', 'g', '29', '23');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'sachet', '29', '40');
+
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '30', '83'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.35', 'cuillère à soupe', '30', '111'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.35', 'NULL', '30', '6'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.35', 'NULL', '30', '5');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.35', 'NULL', '30', '24'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('33.5', 'g', '30', '129'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('20', 'cl', '30', '7');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.35', 'cuillère à soupe', '30', '23');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.2', 'cuillère à soupe', '30', '103'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.2', 'cuillère à café', '30', '130'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.35', 'cuillère à soupe', '30', '99'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.2', 'cuillère à soupe', '30', '51');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('42', 'g', '30', '131'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '30', '132'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '30', '21');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '30', '8');
+
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '31', '104'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('2.5', 'g', '31', '27'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '31', '133');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '31', '8'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'cuillère à soupe', '31', '42'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '31', '134');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'feuille', '31', '91');
+
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('100', 'g', '32', '45');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '32', '135');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'morceau', '32', '136'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '32', '137'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'petit bouquet', '32', '102'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'petit bouquet', '32', '138');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('100', 'g', '32', '139'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('37.5', 'cl', '32', '140'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'étoile', '32', '141');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '32', '142');
+
+
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('50', 'g', '33', '143');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'cuillère à soupe', '33', '15');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '33', '8'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('50', 'g', '33', '144'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '33', '145'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '33', '5');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'NULL', '33', '6'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '33', '103'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '33', '18');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'Cuillère à soupe', '33', '30');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'g', '33', '102');
+
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '34', '11'); 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.25', 'NULL', '34', '145'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'verre', '34', '146');--
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('0.5', 'cuillère à soupe', '34', '30');  
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '34', '8'); 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'pincée', '34', '21');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'verre', '34', '59');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('12.5', 'cl', '34', '147');--
+
+
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('2', 'poignées', '35', '148'); 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('4', 'bouquets', '35', '149'); -- 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '35', '104');--
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'cuillère à soupe', '35', '61');  
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'cuillère à soupe', '35', '150'); 
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('10', 'NULL', '35', '151');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '35', '59');
+INSERT INTO `cook_book`.`possede_rc_ing` (`quantite`, `mesure`, `ID_recette`, `ID_ingr`) VALUES ('1', 'NULL', '35', '152');--
+
 
 INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Cooper', 'Travis', '0', '1', '0', 'CooperTravis@gmail.com');
 INSERT INTO `cook_book`.`utilisateur` (`mot_d_passe`, `nom_utilis`, `prenom_utilis`, `vegetarien`, `halal`, `vegan`, `ad_mail`) VALUES ('123123', 'Bobo', 'marc', '1', '0', '0', 'marctheBobo@gmail.com');
@@ -694,3 +851,18 @@ UPDATE `cook_book`.`recette` SET `date`='2018-04-19' WHERE `ID_recette`='23';
 UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='24';
 UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='25';
 UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='26';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-19' WHERE `ID_recette`='27';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='28';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='29';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='30';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-19' WHERE `ID_recette`='30';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-19' WHERE `ID_recette`='31';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-19' WHERE `ID_recette`='32';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-19' WHERE `ID_recette`='33';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='34';
+UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='35';
+-- UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='36';
+-- UPDATE `cook_book`.`recette` SET `date`='2018-04-19' WHERE `ID_recette`='37';
+-- UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='38';
+-- UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='39';
+-- UPDATE `cook_book`.`recette` SET `date`='2018-04-20' WHERE `ID_recette`='40';
