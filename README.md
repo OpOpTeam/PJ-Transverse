@@ -6,6 +6,3 @@ Afin de rentrer dans le sujet de notre projet transverse autour de « L’intell
 
 •	L’IA réfléchira et proposera à son utilisateur les recette qui sont le plus susceptible à lui plaire. Des statistiques seront menées afin de connaitre le type de plat préféré de l’utilisateur ou encore ses ingrédients préférés.
 
-•	Mise en place de « poids » pour les différents avis de l’utilisateur. En effet, l’avis de l’utilisateur d’il y a une semaine à plus de poids que son avis du mois dernier.
-
-•	A partir des poids, on aurait qu’à instaurer une fonction et un seuil variable à partir duquel on acceptera les recettes. Au contraire, en dessous, on rejettera les recettes.
