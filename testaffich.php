@@ -30,9 +30,12 @@
 		
 
 	//    recherche_nom_recette($conn);
-	    recherche_nom_ingredient($conn);
+	//    recherche_nom_ingredient($conn);
+	//affichage_recette($conn, 1);
 
-
+	nouveaute_recette($conn);
+	nouveaute_les_mieux_note($conn);
+	
 ?>
 	
 

@@ -391,8 +391,66 @@ function affichage_recette($conn, $id_rec){
 
 }
 
+function nouveaute_recette($conn){
+	try{
+		/* Affichage dans l'index pour les meilleures recettes de l'utilisateur limite à 10 recettes*/
+		$reponse = $conn->prepare("SELECT id_recette, nom_recette, datediff(date(NOW()), recette.date) FROM recette Where datediff(date(NOW()), recette.date)<35 ");
 
+		$reponse->execute();
 
+		// Set the resulting array to associative
+		$reponse->setFetchMode(PDO::FETCH_ASSOC);
+		$result = $reponse->fetchAll();
+		
+		echo "<table border=1>";
+		
+		echo "<tr> <td>ID RECETTE</td> <td>Note</td>";
+		foreach ($result as $value)
+		{
+			echo "<tr>";
+			foreach( $value as $key => $val)
+			{
+				echo ("<td> $val<br> </td>");
+			}
+			echo"</tr>";      
+		}
+		echo "</table>";
+	}
+
+	catch(PDOException $e){
+	echo "Error: " . $e->getMessage();
+	}
+}
+
+function nouveaute_les_mieux_note($conn){
+	try{
+		/* Affichage dans l'index pour les meilleures recettes de l'utilisateur limite à 10 recettes*/
+		$reponse = $conn->prepare("SELECT distinct recette.id_recette, nom_recette, datediff(date(NOW()), recette.date), note_util_rc.note FROM recette join note_util_rc on recette.id_recette = note_util_rc.id_recette Where datediff(date(NOW()), recette.date)<35 ");
+		$reponse->execute();
+
+		// Set the resulting array to associative
+		$reponse->setFetchMode(PDO::FETCH_ASSOC);
+		$result = $reponse->fetchAll();
+		
+		echo "<table border=1>";
+		
+		echo "<tr> <td>ID RECETTE</td> <td>Note</td>";
+		foreach ($result as $value)
+		{
+			echo "<tr>";
+			foreach( $value as $key => $val)
+			{
+				echo ("<td> $val<br> </td>");
+			}
+			echo"</tr>";      
+		}
+		echo "</table>";
+	}
+
+	catch(PDOException $e){
+	echo "Error: " . $e->getMessage();
+	}
+}
 
 
 function retrieve_product_id($conn, $id)
