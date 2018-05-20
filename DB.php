@@ -425,7 +425,7 @@ function nouveaute_recette($conn){
 function nouveaute_les_mieux_note($conn){
 	try{
 		/* Affichage dans l'index pour les meilleures recettes de l'utilisateur limite à 10 recettes*/
-		$reponse = $conn->prepare("SELECT distinct recette.id_recette, nom_recette, datediff(date(NOW()), recette.date), note_util_rc.note FROM recette join note_util_rc on recette.id_recette = note_util_rc.id_recette Where datediff(date(NOW()), recette.date)<35 ");
+		$reponse = $conn->prepare("SELECT distinct recette.id_recette, nom_recette, datediff(date(NOW()), recette.date), AVG(note_util_rc.note) FROM recette join note_util_rc on recette.id_recette = note_util_rc.id_recette Where datediff(date(NOW()), recette.date)<35 ");
 		$reponse->execute();
 
 		// Set the resulting array to associative
