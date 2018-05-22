@@ -963,6 +963,7 @@ function nouveaute_les_mieux_note($conn){
 	}
 }
 
+
 function recherche_meilleure_recette_ing_fav($conn){
 	try{
 		if (isset($_SESSION['ID_utilis'])){
@@ -982,9 +983,7 @@ function recherche_meilleure_recette_ing_fav($conn){
 												 																	 	   join compose_ing_all c On c.ID_all = est_all.ID_all
 												 																		   Join possede_rc_ing p on p.ID_ingr = c.ID_ingr 
 																													WHERE est_all.ID_utilis = ".$id_util.")
-
 																					AND ID_recette NOT IN (SELECT DISTINCT id_recette FROM note_util_rc where id_utilis = ".$id_util.") )"
-
 								.(($vege_vega[0]['vegan'] == 1)? " AND ID_recette NOT IN (SELECT DISTINCT ID_recette FROM possede_rc_ing, Ingredient 
 															WHERE (Ingredient.ID_ingr = possede_rc_ing.ID_Ingr) AND ((type = 'Viande') OR (type = 'Laitier') OR (type = 'Poisson') OR (type = 'Fromage')))":
 								(($vege_vega[0]['vegetarien'] == 1)? " AND ID_recette NOT IN (SELECT DISTINCT ID_recette FROM possede_rc_ing, Ingredient 
@@ -1017,10 +1016,10 @@ function recherche_meilleure_recette_ing_fav($conn){
 			//$tab_ID_rec_conseil[] = array('' => , );
 			$temp_id = 0;
 			$cpt_similitude = 0;
-
+			$array = [];
+			$indexarray = -1;
 			foreach ($table_ingr as $value)
 			{
-	
 				foreach( $value as $key => $val)
 				{
 					if ($key == "ID_recette"){
@@ -1034,67 +1033,100 @@ function recherche_meilleure_recette_ing_fav($conn){
 						foreach($table_util_fav as $value2){
 							foreach( $value2 as $kk => $ingr_fav){
 								if ($ingr_fav == $val){
-									$cpt_similitude++;
-									
-								}
-
-								if ($cpt_similitude == 1){
+									if ($cpt_similitude == 0) $indexarray++;
 									$cpt_similitude++;
 									// recettes succeptibles de plaire au monsieur 😀 
-									//array_push($table_util_fav,$temp_id);
-									$reponse3 = $conn->prepare("SELECT count(*), AVG(n.note), r.temps_min, r.nom_recette, r.ID_recette
-										FROM note_util_rc n
-										JOIN recette r ON r.ID_recette = n.ID_recette
-										WHERE r.ID_recette = ".$temp_id."
-										GROUP BY nom_recette
-										ORDER BY AVG(n.note)
-										");
-									$reponse3->execute();
-
-									// result est un tableau deux dimensions result[, nom]
-									// echo $result[3]['ID_recette']; 
-									
-									while ($row = $reponse3->fetch(PDO::FETCH_ASSOC))
-									{
-										?>
-										<div class="col-lg-6 col-md-6 col-sm-6 animate-box" data-animate-effect="fadeIn">				
-											<a href="recette.php?recette=<?php echo $row['ID_recette'];?>" class="fh5co-card-item">
-												<figure>
-													<div class="overlay"><i class="ti-plus"></i></div>
-													<img src="images/recette_<?php echo $row['ID_recette'];?>.jpg" alt="Image" class="img-responsive">
-												</figure>
-												<div class="fh5co-text">
-													<div class="row">
-														<?php						
-														for($star = 0; $star < round($row['AVG(n.note)'], 0); $star++){
-															?>
-																<i class="icon-star2"></i>
-															<?php
-														}
-														for($star = round($row['AVG(n.note)'], 0); $star < 5; $star++){
-															?>
-																<i class="icon-star-outlined"></i>
-															<?php
-														}
-														echo $row['count(*)'];?> avis
-														<div class="row">
-															<i class="icon-clock"></i>
-															<?php echo $row['temps_min']; ?> minutes
-														</div>
-														<div class="row row-mt-1em">
-															<h3 class="cursive-font"><?php echo $row['nom_recette'];?></h3>					
-														</div>
-													</div>
-												</div>
-											</a>
-										</div>
-										<?php   
-									}
+									$array[$indexarray] = [];
+									$array[$indexarray][0] = $temp_id;
+									$array[$indexarray][1] = $cpt_similitude;
 								}
 							}
 						}
 					}
 				}
+			}
+
+			for ($i = 0; $i <= $indexarray; $i++){
+    			if ($i == 0)$where_query = "WHERE r.ID_recette = " .$array[$i][0];
+    			else {
+    				$where_query .= " OR (r.ID_recette = " .$array[$i][0]. ") ";
+    			}
+    		}
+
+			$reponse3 = $conn->prepare("SELECT count(*), AVG(n.note), r.temps_min, r.nom_recette, r.ID_recette
+										FROM note_util_rc n
+										JOIN recette r ON r.ID_recette = n.ID_recette
+										". $where_query ." 
+										GROUP BY nom_recette
+										ORDER BY AVG(n.note)
+										");
+			$reponse3->execute();
+			$reponse3->setFetchMode(PDO::FETCH_ASSOC);
+			$tabPoids = $reponse3->fetchAll();
+			
+			//foreach ($tabPoids as $row)
+
+			for ($i = 0; $i < count($tabPoids); $i++)
+			{
+				$k = 0;
+				while($tabPoids[$i]['ID_recette'] != $array[$k][0]) $k++;
+				$tabPoids[$i]['nb_similitude'] = $array[$k][1];
+			}
+			
+			$poidsIngCommun = 3;
+			$poidsNote = 5;
+			
+			$k = 1;
+			while ($k < count($tabPoids)) 
+			{			
+				if($tabPoids[$k]['nb_similitude']*$poidsIngCommun + $tabPoids[$k]['AVG(n.note)']*$poidsNote > $tabPoids[$k - 1]['nb_similitude']*$poidsIngCommun + $tabPoids[$k - 1]['AVG(n.note)']*$poidsNote) 
+				{
+					$Temp = $tabPoids[$k];
+					$tabPoids[$k] = $tabPoids[$k - 1];
+					$tabPoids[$k - 1] = $Temp;
+					$k = 0;
+				}
+				$k++;
+			}
+			
+			// result est un tableau deux dimensions result[, nom]
+			// echo $result[3]['ID_recette']; 
+			
+			foreach($tabPoids as $row)
+			{
+				?>
+				<div class="col-lg-6 col-md-6 col-sm-6 animate-box" data-animate-effect="fadeIn">				
+					<a href="recette.php?recette=<?php echo $row['ID_recette'];?>" class="fh5co-card-item">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="images/recette_<?php echo $row['ID_recette'];?>.jpg" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<div class="row">
+								<?php						
+								for($star = 0; $star < round($row['AVG(n.note)'], 0); $star++){
+									?>
+										<i class="icon-star2"></i>
+									<?php
+								}
+								for($star = round($row['AVG(n.note)'], 0); $star < 5; $star++){
+									?>
+										<i class="icon-star-outlined"></i>
+									<?php
+								}
+								echo $row['count(*)'];?> avis
+								<div class="row">
+									<i class="icon-clock"></i>
+									<?php echo $row['temps_min']; ?> minutes
+								</div>
+								<div class="row row-mt-1em">
+									<h3 class="cursive-font"><?php echo $row['nom_recette'];?></h3>					
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<?php   
 			}
 		?>
 		</div>
@@ -1123,6 +1155,7 @@ function recherche_meilleure_recette_ing_fav($conn){
 	echo "Error: " . $e->getMessage();
 	}
 }
+
 
 function affichage_recette_notee($conn){
 	try{
