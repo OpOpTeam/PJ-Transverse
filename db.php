@@ -1004,9 +1004,8 @@ function recherche_meilleure_recette_ing_fav($conn){
 		$reponse2->execute();
 		// Set the resulting array to associative
 		$reponse2->setFetchMode(PDO::FETCH_ASSOC);
-		$count = $reponse2->fetchColumn();
 		$table_util_fav = $reponse2->fetchAll();
-	    if(!empty ($count)){
+	    if(!empty ($table_util_fav)){
 	    	?>
 	    	<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
