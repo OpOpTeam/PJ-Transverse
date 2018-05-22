@@ -547,7 +547,7 @@ function information_recette($conn){
 						}
 						else {
 							?>
-							<a href="recette-review?recette=<?php echo $row['ID_recette'];?>" id="review">
+							<a href="recette-review.php?recette=<?php echo $row['ID_recette'];?>" id="review">
 							<?php
 								echo round($row['AVG(n.note)'], 1)?>/5  <?php echo $row['count(*)']
 						?> avis 
